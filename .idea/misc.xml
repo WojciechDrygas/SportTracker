@@ -4,6 +4,8 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/backend/auth-service/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/api-gw/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/discovery-service/pom.xml" />
       </list>
     </option>
   </component>

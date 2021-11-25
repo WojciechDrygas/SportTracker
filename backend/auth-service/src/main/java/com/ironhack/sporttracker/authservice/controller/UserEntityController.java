@@ -4,10 +4,7 @@ import com.ironhack.sporttracker.authservice.dto.NewUserDTO;
 import com.ironhack.sporttracker.authservice.dto.UserDetailsDTO;
 import com.ironhack.sporttracker.authservice.service.UserEntityService;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserEntityController {
@@ -23,7 +20,11 @@ public class UserEntityController {
     public UserDetailsDTO createUser(@RequestBody NewUserDTO newUserDTO){
         return userEntityService.createUser(newUserDTO);
     }
-
+    @GetMapping("/user_details")
+    @ResponseStatus(HttpStatus.OK)
+    public UserDetailsDTO getUserDetails(@RequestHeader (name="Authorization") String token){
+            return userEntityService.getUserDetails(token);
+    }
 
 
 }
