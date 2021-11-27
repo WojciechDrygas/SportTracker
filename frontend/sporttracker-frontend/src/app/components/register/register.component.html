@@ -1,0 +1,34 @@
+<!-- Container -->
+<div id="form-container">
+<!-- Title-->
+<h1>REGISTER</h1>
+
+<!-- Form -->
+<form [formGroup]="registerForm"(ngSubmit)="onSubmit()" >
+
+  <!-- Username Input Group -->
+  <div class="form-group">
+    <!--input--><input type="text" class="form-control" formControlName="username" placeholder="Username *">
+    <!--error-invalid--><p class="alert-warning alert-danger fade show error-msg" *ngIf="registerForm.controls['username'].invalid && (registerForm.controls['username'].dirty || registerForm.controls['username'].touched)">Please enter your username.</p>
+  </div>
+
+    <!-- Email Input Group -->
+    <div class="form-group">
+      <!--input--><input type="text" class="form-control" formControlName="email" placeholder="Email *">
+      <!--error-message--><p class="alert-warning alert-danger fade show error-msg" *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)">Please enter your email.</p>
+    </div>
+    <!-- Password Input Group -->
+    <div class="form-group">
+        <!--input--><input class="form-control" formControlName="password" placeholder="Password *">
+        <!--error-message--><p class="alert-warning alert-danger fade show error-msg" *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)">Please enter your password.</p>
+    </div>
+    <!-- Password Confirmation Input Group -->
+    <div class="form-group">
+        <!--input--><input class="form-control" formControlName="passwordConfirmation" placeholder="Password Confirmation *">
+        <!--error-required--><p class="alert-warning alert-danger fade show error-msg" *ngIf="registerForm.controls['passwordConfirmation'].invalid && (registerForm.controls['passwordConfirmation'].dirty || registerForm.controls['passwordConfirmation'].touched)">Please enter your password confirmation.</p>
+        <!-- error-passwords match<p class="alert-warning alert-danger fade show error-msg" *ngIf="registerForm.controls.passwordConfirmation.errors && !registerForm.controls['passwordConfirmation'].invalid && !registerForm.controls['password'].invalid && (registerForm.controls['passwordConfirmation'].dirty || registerForm.controls['passwordConfirmation'].touched)">Passwords do not match.</p> -->
+    </div>
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">SUBMIT</button>
+</form>
+</div>

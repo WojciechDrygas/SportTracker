@@ -40,8 +40,8 @@ public class UserEntityService implements UserDetailsService {
         if (userByEmail.isPresent()){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User email already exists!");
         }
-        Optional<UserEntity> userByLogin = userEntityRepository.findByLogin(newUserDTO.getLogin());
-        if (userByLogin.isPresent()){
+        Optional<UserEntity> userByUsername = userEntityRepository.findByUsername(newUserDTO.getUsername());
+        if (userByUsername.isPresent()){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User login already exists!");
         }
         newUserDTO.setPassword(encoder.encode(newUserDTO.getPassword()));
@@ -64,8 +64,8 @@ public class UserEntityService implements UserDetailsService {
         }
     }
 
-    public UserDetailsDTO getUserDetailsByLogin(String login) {
-        Optional<UserEntity> user = userEntityRepository.findByLogin(login);
+    public UserDetailsDTO getUserDetailsByUsername(String username) {
+        Optional<UserEntity> user = userEntityRepository.findByUsername(username);
         if (user.isEmpty()){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Failed to login!");
         }else{
@@ -74,13 +74,13 @@ public class UserEntityService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        Optional<UserEntity> user = userEntityRepository.findByLogin(login);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<UserEntity> user = userEntityRepository.findByUsername(username);
         if (user.isEmpty()){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Failed to login!");
         }
         else{
-            return new User(user.get().getLogin(),user.get().getPassword(), true, true, true, true, new ArrayList<>());
+            return new User(user.get().getUsername(),user.get().getPassword(), true, true, true, true, new ArrayList<>());
         }
     }
 }
