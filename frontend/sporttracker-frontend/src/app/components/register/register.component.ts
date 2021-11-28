@@ -1,8 +1,10 @@
-import { NewUser } from './../../models/new-user.model';
+import { AuthService } from './../../services/auth/auth.service';
+import { NewUserModel } from './../../models/new-user.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PasswordsMustMatch } from '../../utils/validators/passwords-must-match';
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -26,22 +28,28 @@ export class RegisterComponent implements OnInit {
 
 
   //Constructor
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router, private authService:AuthService) {}
 
   //ngOnInit
   ngOnInit(): void {
+    this.authService.logout();
   }
   //onSubmit
   onSubmit(){
     if (this.registerForm.valid && this.registerForm.touched){
-      let user = new NewUser(
+      let user = new NewUserModel(
         this.registerForm.value.username,
         this.registerForm.value.email,
         this.registerForm.value.password
       )
-      console.log("New user data:",user);
-    } else {
-      console.log(this.registerForm);
+      this.authService.createNewUser(user).subscribe(
+        () => {this.router.navigate(['/login'])},
+        err => {
+          console.log("Error while registering:",<HttpErrorResponse>err.status);
+          window.alert("Warning! Username or Email already taken!")}
+      );
+    }
+    else {
       window.alert("Warning! Form is not correctly inputed.")
     }
 

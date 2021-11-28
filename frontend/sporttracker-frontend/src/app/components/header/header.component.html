@@ -9,9 +9,10 @@
                   <li class="nav-item"><a class="nav-link" routerLinkActive="active">Discover</a></li>
           </ul>
           <ul class="navbar-nav mb-2 mb-lg-0 d-flex">
-                  <li class="nav-item"><a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a></li>
-                  <li class="nav-item"><a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a></li>
-                  <li class="nav-item"><a class="nav-link" routerLink="" (click)="onLogout()" routerLinkActive="active">Logout</a></li>
+                  <li *ngIf=showRoutesForNewUsers() class="nav-item"><a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a></li>
+                  <li *ngIf=showRoutesForNewUsers() class="nav-item"><a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a></li>
+                  <li *ngIf=showRoutesForLoggedIn() class="nav-item"><a class="nav-link" routerLink="" (click)="onLogout()" routerLinkActive="active">Logout</a></li>
+                  <li *ngIf=showRoutesForLoggedIn() class="nav-item"><a class="nav-link" routerLink="">Logged as: {{this.showUsername()}}</a></li>
           </ul>
       </div>
   </div>

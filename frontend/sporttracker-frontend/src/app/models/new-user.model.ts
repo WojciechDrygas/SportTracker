@@ -1,4 +1,4 @@
-export class NewUser{
+export class NewUserModel{
   private username:string;
   private password:string;
   private email:string;

@@ -1,3 +1,6 @@
+import { UserDetailsModel } from './../../models/user-details.model';
+import { StorageService } from './../../services/storage/storage.service';
+import { AuthService } from './../../services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,16 +11,31 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   isNavbarOpen=false;
 
-  constructor() { }
+  constructor(private authService:AuthService, private storageService:StorageService) { }
 
   ngOnInit(): void {
   }
 
   onLogout(){
-    console.log("Logged out!");
+    this.authService.logout();
   }
   toggleNavbar() {
     this.isNavbarOpen = !this.isNavbarOpen;
+  }
+
+  showRoutesForLoggedIn(){
+    return this.authService.isLoggedIn();
+  }
+  showRoutesForNewUsers(){
+    return !this.authService.isLoggedIn();
+  }
+  showUsername(){
+    try{
+      return <string>(JSON.parse(this.storageService.getValue("user_details")).username);
+    }catch(ex){
+      return '';
+    }
+
   }
 
 

@@ -1,3 +1,5 @@
+import { LoginModel } from './../../models/login.model';
+import { AuthService } from './../../services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -10,9 +12,12 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(private fb: FormBuilder, private router: Router, private authService:AuthService) { }
 
   ngOnInit(): void {
+    if (this.authService.isLoggedIn()){
+      this.router.navigate(['/']);
+    }
   }
 
   loginForm = this.fb.group({
@@ -21,7 +26,15 @@ export class LoginComponent implements OnInit {
   });
 
   onSubmit(){
-    console.log("On submit from login component");
+    if (this.loginForm.touched && this.loginForm.valid){
+      const loginModel:LoginModel = new LoginModel(
+        this.loginForm.value.username,
+        this.loginForm.value.password
+      );
+      this.authService.login(loginModel);
+    }else{
+      window.alert("Username and Password are required!")
+    }
   }
 
 }
