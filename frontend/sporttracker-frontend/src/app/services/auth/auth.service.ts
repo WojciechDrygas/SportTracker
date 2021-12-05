@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { StorageService } from './../storage/storage.service';
-import { LoginModel } from './../../models/login.model';
-import { NewUserModel } from './../../models/new-user.model';
+import { LoginModel } from '../../models/user-models/login.model';
+import { NewUserModel } from './../../models/user-models/new-user.model';
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 

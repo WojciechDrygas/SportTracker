@@ -9,7 +9,13 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
 
+  test:string[] = [];
+
   ngOnInit(): void {
+  }
+
+  onSubmit(){
+    this.test.push("test1");
   }
 
 }

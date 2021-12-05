@@ -9,6 +9,7 @@ import org.springframework.core.env.Environment;
 @Configuration
 public class ApiGatewayConfiguration {
     private final String AUTH_SERVICE = "AUTH-SERVICE";
+    private final String SPORT_DATA_SERVICE = "SPORT-DATA-SERVICE";
     private final Environment environment;
 
     public ApiGatewayConfiguration(Environment environment) {
@@ -25,6 +26,11 @@ public class ApiGatewayConfiguration {
                         .uri("lb://" + AUTH_SERVICE))
                 .route(p -> p.path("/auth/login")
                         .uri("lb://" + AUTH_SERVICE))
+                .route(p->p.path("/leagues")
+                        .uri("lb://"+SPORT_DATA_SERVICE))
+                .route(p->p.path("/leagues/**")
+                        .uri("lb://"+SPORT_DATA_SERVICE))
+
                 .build();
     }
 }

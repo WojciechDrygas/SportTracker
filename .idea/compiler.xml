@@ -7,15 +7,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="sport-data" />
         <module name="auth-service" />
-        <module name="discovery-service" />
         <module name="api-gw" />
+        <module name="discovery-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="api-gw" target="17" />
       <module name="auth-service" target="17" />
       <module name="discovery-service" target="17" />
+      <module name="sport-data" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -23,6 +25,7 @@
       <module name="api-gw" options="-parameters" />
       <module name="auth-service" options="-parameters" />
       <module name="discovery-service" options="-parameters" />
+      <module name="sport-data" options="-parameters" />
     </option>
   </component>
 </project>

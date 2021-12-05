@@ -1,0 +1,12 @@
+<h1>Available Leagues</h1>
+<p *ngIf="subscribedLeagues.length==0">No leagues available!</p>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let league of subscribedLeagues">
+    <div class="container" [routerLink]="['/league', league.leagueIdV2]">
+      <p>{{league.name}}</p>
+      <img src='{{league.logoUrl}}' alt="">
+    </div>
+
+  </li>
+
+</ul>

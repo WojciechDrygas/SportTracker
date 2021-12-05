@@ -1,4 +1,4 @@
-import { UserDetailsModel } from './../../models/user-details.model';
+import { UserDetailsModel } from './../../models/user-models/user-details.model';
 import { StorageService } from './../../services/storage/storage.service';
 import { AuthService } from './../../services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
