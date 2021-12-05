@@ -17,15 +17,13 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String login;
+    private String username;
     private String password;
-    private String name;
     private String email;
 
-    public UserEntity(String login, String password, String name, String email) {
-        this.login = login;
+    public UserEntity(String username, String password, String email) {
+        this.username = username;
         this.password = password;
-        this.name = name;
         this.email = email;
     }
 }

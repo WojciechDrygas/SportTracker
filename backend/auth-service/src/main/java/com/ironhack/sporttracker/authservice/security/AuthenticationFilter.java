@@ -38,7 +38,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
             LoginDTO creds = new ObjectMapper()
                     .readValue(request.getInputStream(),LoginDTO.class);
             return getAuthenticationManager().authenticate(new UsernamePasswordAuthenticationToken(
-                    creds.getLogin(),creds.getPassword(),new ArrayList<>()));
+                    creds.getUsername(),creds.getPassword(),new ArrayList<>()));
 
         }catch (IOException e){
             throw new RuntimeException(e);
@@ -47,8 +47,8 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
-        String login = ((User)authResult.getPrincipal()).getUsername();
-        UserDetailsDTO userDetailsDTO = userEntityService.getUserDetailsByLogin(login);
+        String username = ((User)authResult.getPrincipal()).getUsername();
+        UserDetailsDTO userDetailsDTO = userEntityService.getUserDetailsByUsername(username);
 
         String token = Jwts.builder()
                 .setSubject(userDetailsDTO.getId().toString())
