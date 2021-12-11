@@ -19,12 +19,12 @@
     </div>
     <!-- Password Input Group -->
     <div class="form-group">
-        <!--input--><input class="form-control" formControlName="password" placeholder="Password *">
+        <!--input--><input type="password" class="form-control" formControlName="password" placeholder="Password *">
         <!--error-message--><p class="alert-warning alert-danger fade show error-msg" *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)">Please enter your password.</p>
     </div>
     <!-- Password Confirmation Input Group -->
     <div class="form-group">
-        <!--input--><input class="form-control" formControlName="passwordConfirmation" placeholder="Password Confirmation *">
+        <!--input--><input class="form-control" type="password" formControlName="passwordConfirmation" placeholder="Password Confirmation *">
         <!--error-required--><p class="alert-warning alert-danger fade show error-msg" *ngIf="registerForm.controls['passwordConfirmation'].invalid && (registerForm.controls['passwordConfirmation'].dirty || registerForm.controls['passwordConfirmation'].touched)">Please enter your password confirmation.</p>
         <!-- error-passwords match<p class="alert-warning alert-danger fade show error-msg" *ngIf="registerForm.controls.passwordConfirmation.errors && !registerForm.controls['passwordConfirmation'].invalid && !registerForm.controls['password'].invalid && (registerForm.controls['passwordConfirmation'].dirty || registerForm.controls['passwordConfirmation'].touched)">Passwords do not match.</p> -->
     </div>

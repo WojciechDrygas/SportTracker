@@ -13,9 +13,10 @@ import { Team } from 'src/app/models/sport-data-models/team.model';
 })
 export class TeamPageComponent implements OnInit {
 
-  constructor(private sportDataService:SportDataService, private route:ActivatedRoute, private favoritesService:FavoritesService) { }
+  constructor(private sportDataService:SportDataService, private route:ActivatedRoute, private favoritesService:FavoritesService, private router:Router) { }
 
   teamId:number=0;
+  leagueId:number=0;
   teamData:Team={};
   nextFixtures:Fixture[] = [];
   lastFixtures:Fixture[] = [];
@@ -23,6 +24,7 @@ export class TeamPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.teamId = this.route.snapshot.params['teamId'];
+    this.leagueId = this.route.snapshot.params['leagueId'];
     this.sportDataService.getTeamDataForId(this.teamId).subscribe(resp=>{
       if (resp.body){
         this.teamData=resp.body;
@@ -46,6 +48,9 @@ export class TeamPageComponent implements OnInit {
         }
       })
     })
+  }
+  onBack(){
+    this.router.navigate(["/league/",this.leagueId]);
   }
 
   onDelete(){

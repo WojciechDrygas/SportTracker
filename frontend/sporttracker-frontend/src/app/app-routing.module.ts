@@ -31,7 +31,7 @@ const routes: Routes = [
       path:'favorites',
       component: FavoritesComponent
     },{
-      path:'teams/:teamId',
+      path:'teams/:leagueId/:teamId',
       component:TeamPageComponent
     }
   ];

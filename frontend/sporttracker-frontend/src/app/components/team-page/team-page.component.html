@@ -10,6 +10,11 @@
     </div>
   </div>
   <div class="row">
+    <div class="col-12">
+      <button class="btn btn-info" (click)="onBack()">Go back to League</button>
+    </div>
+  </div>
+  <div class="row">
     <div class="col">
       <button class="btn btn-warning" *ngIf="!isFavorite" (click)=onAdd()>Add to Favorites</button>
       <button class="btn btn-warning" *ngIf="isFavorite" (click)=onDelete()>Delete from Favorites</button>
