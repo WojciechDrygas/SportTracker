@@ -1,21 +1,31 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-6 d-flex flex-row">
-      <a class="nav-link" routerLinkActive="active" routerLink="/leagues">Leagues</a>
-      <a *ngIf=showRoutesForLoggedIn() class="nav-link" class="nav-link" routerLink="/favorites">Favorites</a>
-    </div>
-    <div class="col-6 d-flex flex-row-reverse">
+<nav class="navbar navbar-dark bg-sporttracker navbar-expand-md">
+  <a href="#" class="navbar-brand">SportTracker</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="mainmenu">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/leagues">Leagues</a>
+      </li>
+      <li class="nav-item" *ngIf=showRoutesForLoggedIn()>
+        <a  class="nav-link" class="nav-link" routerLink="/favorites">Favorites</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item " *ngIf=showRoutesForLoggedIn()>
+        <a class="nav-link" routerLink="">Logged as: {{this.showUsername()}}</a>
+      </li>
+      <li class="nav-item " *ngIf=showRoutesForNewUsers()>
+        <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
+      </li>
+      <li class="nav-item " *ngIf=showRoutesForNewUsers()>
+        <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+      </li>
+      <li class="nav-item " *ngIf=showRoutesForLoggedIn()>
+        <a  class="nav-link" routerLink="" (click)="onLogout()" routerLinkActive="active">Logout</a>
+      </li>
 
-      <a *ngIf=showRoutesForNewUsers() class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
-      <a *ngIf=showRoutesForNewUsers() class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
-      <a *ngIf=showRoutesForLoggedIn() class="nav-link" routerLink="" (click)="onLogout()" routerLinkActive="active">Logout</a>
-      <a *ngIf=showRoutesForLoggedIn() class="nav-link" routerLink="">Logged as: {{this.showUsername()}}</a>
-    </div>
+    </ul>
   </div>
-</div>
-
-
-
-
-
-
+</nav>
