@@ -33,4 +33,9 @@ public class FavoriteTeamController {
     public void deleteFavorite(@PathVariable Long id, @RequestHeader (name="Authorization") String token){
         favoriteTeamService.deleteFavorite(id, token, Sport.FOOTBALL);
     }
+    @GetMapping("/inner/stats/most-fav")
+    @ResponseStatus(HttpStatus.OK)
+    public List<FavoriteTeamDTO> getMostFav(){
+        return favoriteTeamService.getMostFav();
+    }
 }

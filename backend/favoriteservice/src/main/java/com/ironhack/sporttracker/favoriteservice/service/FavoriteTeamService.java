@@ -83,4 +83,13 @@ public class FavoriteTeamService {
         }
 
     }
+
+    public List<FavoriteTeamDTO> getMostFav() {
+        List<FavoriteTeam> favs = favoriteTeamRepository.getMostFav();
+        List<FavoriteTeamDTO> favsDTO = new ArrayList<>();
+        for (FavoriteTeam fav:favs){
+            favsDTO.add(modelMapper.map(fav,FavoriteTeamDTO.class));
+        }
+        return favsDTO;
+    }
 }

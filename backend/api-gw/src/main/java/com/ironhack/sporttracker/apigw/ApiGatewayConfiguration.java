@@ -11,6 +11,7 @@ public class ApiGatewayConfiguration {
     private final String AUTH_SERVICE = "AUTH-SERVICE";
     private final String SPORT_DATA_SERVICE = "SPORT-DATA-SERVICE";
     private final String FAVORITE_SERVICE = "FAVORITE-SERVICE";
+    private final String STATISTICAL_SERVICE = "STATISTICAL-SERVICE";
     private final Environment environment;
 
     public ApiGatewayConfiguration(Environment environment) {
@@ -39,6 +40,8 @@ public class ApiGatewayConfiguration {
                 .route(p -> p.path("/delete/favorite/**")
                         .filters(f -> f.filter(new AuthFilter(environment).apply(new AuthFilter.Config())))
                         .uri("lb://" + FAVORITE_SERVICE))
+                .route(p->p.path("/stats/football/**")
+                        .uri("lb://"+STATISTICAL_SERVICE))
                 .build();
     }
 }

@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/backend/discovery-service/pom.xml" />
         <option value="$PROJECT_DIR$/backend/sport-data/pom.xml" />
         <option value="$PROJECT_DIR$/backend/favoriteservice/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/statistical-service/pom.xml" />
       </list>
     </option>
   </component>

@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="sport-data" />
+        <module name="statistical-service" />
         <module name="auth-service" />
         <module name="api-gw" />
         <module name="favoriteservice" />
@@ -20,6 +21,7 @@
       <module name="discovery-service" target="17" />
       <module name="favoriteservice" target="17" />
       <module name="sport-data" target="17" />
+      <module name="statistical-service" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -29,6 +31,7 @@
       <module name="discovery-service" options="-parameters" />
       <module name="favoriteservice" options="-parameters" />
       <module name="sport-data" options="-parameters" />
+      <module name="statistical-service" options="-parameters" />
     </option>
   </component>
 </project>
