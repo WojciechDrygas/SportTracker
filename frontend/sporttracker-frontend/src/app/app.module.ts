@@ -11,6 +11,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LeaguesComponent } from './components/leagues/leagues.component';
 import { LeagueComponent } from './components/league/league.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
+import { TeamPageComponent } from './components/team-page/team-page.component';
+import { FixtureComponent } from './components/fixture/fixture.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,10 @@ import { LeagueComponent } from './components/league/league.component';
     HomeComponent,
     HeaderComponent,
     LeaguesComponent,
-    LeagueComponent
+    LeagueComponent,
+    FavoritesComponent,
+    TeamPageComponent,
+    FixtureComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +37,7 @@ import { LeagueComponent } from './components/league/league.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,10 @@
+.container{
+  text-align: center;
+  justify-content: center;
+}
+.header-row{
+  justify-content: center;
+}
+img{
+  height: 40%;
+}

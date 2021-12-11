@@ -1,0 +1,23 @@
+.container-fluid{
+  justify-content: center;
+  text-align: center;
+  min-width: 950px;
+  padding-top: 25px;
+}
+.header-row{
+  border: 1px solid #14213D;
+}
+.row{
+  margin:10px;
+}
+.col-2 img{
+  width: 10%;
+  height: auto;
+
+}
+.color-row{
+  background-color:#E5E5E5;
+}
+.col-2{
+  text-align: left;
+}

@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4" [ngClass]="calculateFixtureColor(true)">
+      <p>Home team:</p>
+      <p><b>{{data.homeTeam.team_name}}</b></p>
+      <p><b>{{data.goalsHomeTeam ? data.goalsHomeTeam : '0'}}</b></p>
+      <img src={{data.homeTeam.logo}} alt="">
+    </div>
+    <div class="col-4 fixture-info">
+      <p>{{data.round}}</p>
+      <p><b>{{data.eventDate}}</b></p>
+      <span>Played at:</span>
+      <p class="venue"><b>{{data.venue}}</b></p>
+      <span>Status:</span>
+      <p><b>{{data.status}}</b></p>
+    </div>
+    <div class="col-4" [ngClass]="calculateFixtureColor(false)">
+      <p>Away team:</p>
+      <p><b>{{data.awayTeam.team_name}}</b></p>
+      <p><b>{{data.goalsAwayTeam ? data.goalsAwayTeam : '0'}}</b></p>
+      <img src={{data.awayTeam.logo}} alt="">
+    </div>
+  </div>
+</div>

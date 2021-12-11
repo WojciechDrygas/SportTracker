@@ -1,0 +1,30 @@
+.container{
+  background-color:#e5e5e5 ;
+  margin: 5px;
+  text-align: center;
+}
+.fixture-info{
+  border: 1px solid black;
+}
+img{
+  width: 50%;
+  height: auto;
+}
+p{
+  margin-bottom: 0.5rem;
+}
+.loser{
+  background-color: rgba(255, 99, 71, 1);
+}
+.winner{
+  background-color: rgb(60, 179, 113);
+}
+.draw{
+  background-color: #FCA311;
+}
+.not-started{
+  background-color:#e5e5e5
+}
+.venue{
+  font-size: small;
+}

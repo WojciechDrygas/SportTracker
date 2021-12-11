@@ -28,7 +28,6 @@ export class AuthService {
   login(loginModel:LoginModel){
     this.http.post(`${this.backendUrl}/auth/login`,loginModel,{observe:'response'}).subscribe(
       res=>{
-        console.log("Response from auth/login endpoint:",res);
         if (res.status==200){
           this.storageService.storeValue("jwt",res.headers.get('pragma'));
           this.storeUserDetails();

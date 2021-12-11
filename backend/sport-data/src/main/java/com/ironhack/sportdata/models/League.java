@@ -1,4 +1,4 @@
-package com.ironhack.sportdata.leagues.models;
+package com.ironhack.sportdata.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,5 +13,4 @@ public class League {
     private Long leagueId;
     private String logoUrl;
     private String name;
-    private Long leagueIdV2;
 }

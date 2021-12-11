@@ -1,3 +1,5 @@
+import { TeamPageComponent } from './components/team-page/team-page.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 import { LeagueComponent } from './components/league/league.component';
 import { LeaguesComponent } from './components/leagues/leagues.component';
 import { HomeComponent } from './components/home/home.component';
@@ -25,6 +27,12 @@ const routes: Routes = [
     },{
       path:'league/:leagueId',
       component: LeagueComponent
+    },{
+      path:'favorites',
+      component: FavoritesComponent
+    },{
+      path:'teams/:teamId',
+      component:TeamPageComponent
     }
   ];
 

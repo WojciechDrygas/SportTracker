@@ -1,4 +1,10 @@
-ul{
-  display: flex;
-  flex-direction:row;
+.container{
+  text-align: center;
+  justify-content: center;
+}
+h1{
+  margin: 50px;
+}
+.league{
+  margin-bottom: 10%;
 }

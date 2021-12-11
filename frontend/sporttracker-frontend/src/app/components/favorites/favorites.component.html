@@ -1,0 +1,22 @@
+<div class="container">
+  <h2>Favorite teams</h2>
+  <div class="row header-row">
+    <div class="col-2" *ngFor="let favorite of favorites">
+      <img src={{favorite.teamLogo}} alt="" srcset="">
+      <p><b>{{favorite.teamName}}</b></p>
+      <button class="btn btn-warning" (click)="onDelete(favorite.teamId)">Delete from favorites!</button>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h2>Last fixtures</h2>
+      <app-fixture *ngFor="let fixture of lastFixtures;let i = index" [data]=lastFixtures[i]></app-fixture>
+    </div>
+    <div class="col-6">
+      <h2>Next fixtures</h2>
+      <app-fixture *ngFor="let fixture of nextFixtures;let i = index" [data]=nextFixtures[i]></app-fixture>
+    </div>
+  </div>
+</div>
