@@ -1,6 +1,6 @@
 package com.ironhack.sporttracker.statisticalservice.proxy;
 
-import com.ironhack.sporttracker.statisticalservice.model.favorite.FavoriteTeamDTO;
+import com.ironhack.sporttracker.statisticalservice.model.favorite.FavoriteTeamStatsDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -10,5 +10,5 @@ import java.util.List;
 public interface FavoriteProxy {
 
     @GetMapping("/inner/stats/most-fav")
-    List<FavoriteTeamDTO> getMostFav();
+    List<FavoriteTeamStatsDTO> getMostFav();
 }

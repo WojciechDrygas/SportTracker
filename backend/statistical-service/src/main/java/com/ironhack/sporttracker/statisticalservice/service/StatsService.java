@@ -1,6 +1,6 @@
 package com.ironhack.sporttracker.statisticalservice.service;
 
-import com.ironhack.sporttracker.statisticalservice.model.favorite.FavoriteTeamDTO;
+import com.ironhack.sporttracker.statisticalservice.model.favorite.FavoriteTeamStatsDTO;
 import com.ironhack.sporttracker.statisticalservice.proxy.FavoriteProxy;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ public class StatsService {
 
     private final FavoriteProxy favoriteProxy;
 
-    public List<FavoriteTeamDTO> getMostFav() {
+    public List<FavoriteTeamStatsDTO> getMostFav() {
         return favoriteProxy.getMostFav();
     }
 }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ironhack.sporttracker.favoriteservice.enums.Sport;
 import com.ironhack.sporttracker.favoriteservice.model.FavoriteTeam;
 import com.ironhack.sporttracker.favoriteservice.model.FavoriteTeamDTO;
+import com.ironhack.sporttracker.favoriteservice.model.FavoriteTeamStatsDTO;
 import com.ironhack.sporttracker.favoriteservice.repositories.FavoriteTeamRepository;
 import io.jsonwebtoken.Jwts;
 import org.modelmapper.ModelMapper;
@@ -12,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -84,12 +86,15 @@ public class FavoriteTeamService {
 
     }
 
-    public List<FavoriteTeamDTO> getMostFav() {
-        List<FavoriteTeam> favs = favoriteTeamRepository.getMostFav();
-        List<FavoriteTeamDTO> favsDTO = new ArrayList<>();
-        for (FavoriteTeam fav:favs){
-            favsDTO.add(modelMapper.map(fav,FavoriteTeamDTO.class));
+    public List<FavoriteTeamStatsDTO> getMostFav() {
+        List<Object[]> queryResult = favoriteTeamRepository.getMostFav();
+        List<FavoriteTeamStatsDTO> result = new ArrayList<>();
+        for (Object[] obj: queryResult){
+            FavoriteTeamStatsDTO tmpFav = new FavoriteTeamStatsDTO();
+            tmpFav.setTeamId(((BigInteger)obj[0]).longValue());
+            tmpFav.setCount(((BigInteger)obj[1]).longValue());
+            result.add(tmpFav);
         }
-        return favsDTO;
+        return result;
     }
 }

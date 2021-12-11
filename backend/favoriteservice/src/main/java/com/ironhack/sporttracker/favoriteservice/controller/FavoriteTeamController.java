@@ -2,6 +2,7 @@ package com.ironhack.sporttracker.favoriteservice.controller;
 
 import com.ironhack.sporttracker.favoriteservice.enums.Sport;
 import com.ironhack.sporttracker.favoriteservice.model.FavoriteTeamDTO;
+import com.ironhack.sporttracker.favoriteservice.model.FavoriteTeamStatsDTO;
 import com.ironhack.sporttracker.favoriteservice.service.FavoriteTeamService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -35,7 +36,7 @@ public class FavoriteTeamController {
     }
     @GetMapping("/inner/stats/most-fav")
     @ResponseStatus(HttpStatus.OK)
-    public List<FavoriteTeamDTO> getMostFav(){
+    public List<FavoriteTeamStatsDTO> getMostFav(){
         return favoriteTeamService.getMostFav();
     }
 }

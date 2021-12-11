@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SportDataService } from './../../services/sport-data/sport-data.service';
 import { Component, OnInit } from '@angular/core';
 import { Team } from 'src/app/models/sport-data-models/team.model';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-team-page',
@@ -13,7 +14,7 @@ import { Team } from 'src/app/models/sport-data-models/team.model';
 })
 export class TeamPageComponent implements OnInit {
 
-  constructor(private sportDataService:SportDataService, private route:ActivatedRoute, private favoritesService:FavoritesService, private router:Router) { }
+  constructor(private sportDataService:SportDataService, private route:ActivatedRoute, private favoritesService:FavoritesService, private router:Router, private auth:AuthService) { }
 
   teamId:number=0;
   leagueId:number=0;
@@ -21,8 +22,10 @@ export class TeamPageComponent implements OnInit {
   nextFixtures:Fixture[] = [];
   lastFixtures:Fixture[] = [];
   isFavorite:boolean = false;
+  isLoggedIn:boolean=false;
 
   ngOnInit(): void {
+    this.isLoggedIn=this.auth.isLoggedIn();
     this.teamId = this.route.snapshot.params['teamId'];
     this.leagueId = this.route.snapshot.params['leagueId'];
     this.sportDataService.getTeamDataForId(this.teamId).subscribe(resp=>{

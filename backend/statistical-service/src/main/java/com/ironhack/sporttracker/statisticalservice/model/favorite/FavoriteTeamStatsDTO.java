@@ -10,9 +10,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class FavoriteTeamDTO {
+public class FavoriteTeamStatsDTO {
     private Long teamId;
-    private Sport sport;
-    private String teamName;
-    private String teamLogo;
+    private Long count;
 }
