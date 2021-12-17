@@ -32,7 +32,6 @@ export class LeagueComponent implements OnInit {
 
       let tmpStandings = await this.sportDataService.getStandingsForLeague(this.leagueId)
       this.standings= tmpStandings.body;
-      console.log("Standings object:",this.standings);
     }
   }
 }

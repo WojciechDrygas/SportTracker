@@ -9,8 +9,13 @@
       <p>Statium capacity: <b>{{teamData.venue_capacity}}</b></p>
     </div>
   </div>
+  <div class="row" [ngStyle]="{'justify-content': 'center'}">
+    <div class="col-2">
+      <app-voting [sport]="'FOOTBALL'" [teamId]="teamId"></app-voting>
+    </div>
+  </div>
   <div class="row">
-    <div class="col-12">
+    <div class="col">
       <button class="btn btn-info" (click)="onBack()">Go back to League</button>
     </div>
   </div>

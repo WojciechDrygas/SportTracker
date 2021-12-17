@@ -1,6 +1,6 @@
 package com.ironhack.sporttracker.statisticalservice.proxy;
 
-import com.ironhack.sporttracker.statisticalservice.model.favorite.FavoriteTeamStatsDTO;
+import com.ironhack.sporttracker.statisticalservice.models.FavoriteTeamStatsDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 

@@ -1,4 +1,4 @@
-package com.ironhack.sporttracker.statisticalservice.model.favorite;
+package com.ironhack.sporttracker.statisticalservice.models;
 
 import com.ironhack.sporttracker.statisticalservice.enums.Sport;
 import lombok.AllArgsConstructor;
@@ -13,4 +13,5 @@ import lombok.Setter;
 public class FavoriteTeamStatsDTO {
     private Long teamId;
     private Long count;
+    private Long leagueId;
 }

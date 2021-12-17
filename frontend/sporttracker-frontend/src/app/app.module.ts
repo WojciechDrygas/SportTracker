@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,8 +15,12 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
 import { TeamPageComponent } from './components/team-page/team-page.component';
 import { FixtureComponent } from './components/fixture/fixture.component';
 import { DatePipe } from '@angular/common';
+import { MostFavoriteComponent } from './components/stats/most-favorite/most-favorite.component';
+import { VotingComponent } from './components/voting/voting.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
+
   declarations: [
     AppComponent,
     LoginComponent,
@@ -27,7 +31,9 @@ import { DatePipe } from '@angular/common';
     LeagueComponent,
     FavoritesComponent,
     TeamPageComponent,
-    FixtureComponent
+    FixtureComponent,
+    MostFavoriteComponent,
+    VotingComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +41,8 @@ import { DatePipe } from '@angular/common';
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

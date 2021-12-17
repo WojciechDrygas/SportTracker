@@ -9,30 +9,25 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Setter
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class FavoriteTeam {
+@Table(name = "votes")
+public class Vote {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private Long ownerId;
+    private Long userId;
+    private Long vote;
     private Long teamId;
-    private String teamName;
-    private String teamLogo;
-
-    @Enumerated(value = EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     private Sport sport;
-    private Long leagueId;
 
-    public FavoriteTeam(Long ownerId, Long teamId, String teamName, String teamLogo, Sport sport, Long leagueId) {
-        this.ownerId = ownerId;
+    public Vote(Long userId, Long vote, Long teamId, Sport sport) {
+        this.userId = userId;
+        this.vote = vote;
         this.teamId = teamId;
-        this.teamName = teamName;
-        this.teamLogo = teamLogo;
         this.sport = sport;
-        this.leagueId = leagueId;
     }
 }

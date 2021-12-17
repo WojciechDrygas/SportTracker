@@ -5,6 +5,8 @@ import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @Configuration
 public class ApiGatewayConfiguration {
@@ -39,6 +41,14 @@ public class ApiGatewayConfiguration {
                         .uri("lb://" + FAVORITE_SERVICE))
                 .route(p -> p.path("/delete/favorite/**")
                         .filters(f -> f.filter(new AuthFilter(environment).apply(new AuthFilter.Config())))
+                        .uri("lb://" + FAVORITE_SERVICE))
+                .route(p -> p.path("/vote")
+                        .filters(f -> f.filter(new AuthFilter(environment).apply(new AuthFilter.Config())))
+                        .uri("lb://" + FAVORITE_SERVICE))
+                .route(p -> p.path("/vote/**")
+                        .filters(f -> f.filter(new AuthFilter(environment).apply(new AuthFilter.Config())))
+                        .uri("lb://" + FAVORITE_SERVICE))
+                .route(p -> p.path("/votes/**")
                         .uri("lb://" + FAVORITE_SERVICE))
                 .route(p->p.path("/stats/football/**")
                         .uri("lb://"+STATISTICAL_SERVICE))

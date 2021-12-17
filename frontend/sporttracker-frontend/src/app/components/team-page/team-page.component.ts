@@ -71,7 +71,8 @@ export class TeamPageComponent implements OnInit {
       teamName:this.teamData.name,
       teamId:this.teamId,
       sport:"FOOTBALL",
-      teamLogo:this.teamData.logo
+      teamLogo:this.teamData.logo,
+      leagueId:this.leagueId
     }
     this.favoritesService.postFavorite(fav).subscribe(resp=>{
       if (resp.status==202){

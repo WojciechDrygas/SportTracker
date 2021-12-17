@@ -93,6 +93,7 @@ public class FavoriteTeamService {
             FavoriteTeamStatsDTO tmpFav = new FavoriteTeamStatsDTO();
             tmpFav.setTeamId(((BigInteger)obj[0]).longValue());
             tmpFav.setCount(((BigInteger)obj[1]).longValue());
+            tmpFav.setLeagueId(((BigInteger)obj[2]).longValue());
             result.add(tmpFav);
         }
         return result;

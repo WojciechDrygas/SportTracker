@@ -3,4 +3,5 @@ export interface Favorite{
   sport?:string;
   teamName?:string;
   teamLogo?:string;
+  leagueId?:number;
 }

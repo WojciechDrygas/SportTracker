@@ -4,6 +4,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+### API KEY ###
+src/main/resources/*.yaml
+
 ### STS ###
 .apt_generated
 .classpath

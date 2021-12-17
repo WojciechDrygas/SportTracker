@@ -10,10 +10,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class FavoriteTeamDTO {
+public class VoteRequest {
+    private Long vote;
     private Long teamId;
     private Sport sport;
-    private String teamName;
-    private String teamLogo;
-    private Long leagueId;
 }
