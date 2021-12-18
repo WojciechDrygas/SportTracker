@@ -33,7 +33,7 @@ export class FixtureComponent implements OnInit {
   }
 
   calculateFixtureColor(isHometown:boolean){
-    if (this.data.status == "Match Finished"){
+    if (this.data.status == "Match Finished" || this.data.status == "Game Finished"){
       let homeGoals = this.data.goalsHomeTeam ? this.data.goalsHomeTeam : 0;
       let awayGoals = this.data.goalsAwayTeam ? this.data.goalsAwayTeam : 0;
       if (homeGoals>awayGoals){return isHometown ? "winner" : "loser"}

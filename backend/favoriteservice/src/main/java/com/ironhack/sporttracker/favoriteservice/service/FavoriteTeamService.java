@@ -1,10 +1,9 @@
 package com.ironhack.sporttracker.favoriteservice.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ironhack.sporttracker.favoriteservice.enums.Sport;
 import com.ironhack.sporttracker.favoriteservice.model.FavoriteTeam;
 import com.ironhack.sporttracker.favoriteservice.model.FavoriteTeamDTO;
-import com.ironhack.sporttracker.favoriteservice.model.FavoriteTeamStatsDTO;
+import com.ironhack.sporttracker.favoriteservice.model.GenericStatsDTO;
 import com.ironhack.sporttracker.favoriteservice.repositories.FavoriteTeamRepository;
 import io.jsonwebtoken.Jwts;
 import org.modelmapper.ModelMapper;
@@ -86,14 +85,15 @@ public class FavoriteTeamService {
 
     }
 
-    public List<FavoriteTeamStatsDTO> getMostFav() {
+    public List<GenericStatsDTO> getMostFav() {
         List<Object[]> queryResult = favoriteTeamRepository.getMostFav();
-        List<FavoriteTeamStatsDTO> result = new ArrayList<>();
+        List<GenericStatsDTO> result = new ArrayList<>();
         for (Object[] obj: queryResult){
-            FavoriteTeamStatsDTO tmpFav = new FavoriteTeamStatsDTO();
+            GenericStatsDTO tmpFav = new GenericStatsDTO();
             tmpFav.setTeamId(((BigInteger)obj[0]).longValue());
             tmpFav.setCount(((BigInteger)obj[1]).longValue());
             tmpFav.setLeagueId(((BigInteger)obj[2]).longValue());
+            tmpFav.setSport(Sport.valueOf(obj[3].toString()));
             result.add(tmpFav);
         }
         return result;

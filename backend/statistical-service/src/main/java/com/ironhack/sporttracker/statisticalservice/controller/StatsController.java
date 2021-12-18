@@ -1,6 +1,5 @@
 package com.ironhack.sporttracker.statisticalservice.controller;
 
-import com.ironhack.sporttracker.statisticalservice.models.FavoriteTeamStatsDTO;
 import com.ironhack.sporttracker.statisticalservice.models.TeamStatsData;
 import com.ironhack.sporttracker.statisticalservice.service.StatsService;
 import org.springframework.http.HttpStatus;
@@ -23,4 +22,16 @@ public class StatsController {
     public List<TeamStatsData> getMostFav(){
         return statsService.getMostFav();
     }
+    @GetMapping("/stats/football/most-liked")
+    @ResponseStatus(HttpStatus.OK)
+    public List<TeamStatsData> getMostLiked(){
+        return statsService.getMostLiked();
+    }
+    @GetMapping("/stats/football/most-disliked")
+    @ResponseStatus(HttpStatus.OK)
+    public List<TeamStatsData> getMostDisliked(){
+        return statsService.getMostDisliked();
+    }
+
+
 }

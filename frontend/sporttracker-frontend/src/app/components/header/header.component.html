@@ -1,3 +1,6 @@
+<div class="loader-container" *ngIf="loaderService.isLoading | async">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
 <nav class="navbar navbar-dark bg-sporttracker navbar-expand-md">
   <a href="#" class="navbar-brand">SportTracker</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false">
@@ -6,7 +9,10 @@
   <div class="collapse navbar-collapse" id="mainmenu">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLinkActive="active" routerLink="/leagues">Leagues</a>
+        <a class="nav-link" routerLinkActive="active" routerLink="/leagues/football">Football Leagues</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/leagues/basketball">Basketball Leagues</a>
       </li>
       <li class="nav-item" *ngIf=showRoutesForLoggedIn()>
         <a  class="nav-link" class="nav-link" routerLink="/favorites">Favorites</a>

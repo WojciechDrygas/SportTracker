@@ -5,4 +5,5 @@ export interface TeamStat{
   team_id?:number;
   logo?:string;
   leagueId?:number;
+  sport?:string;
 }

@@ -14,4 +14,5 @@ public class VoteRequest {
     private Long vote;
     private Long teamId;
     private Sport sport;
+    private Long leagueId;
 }

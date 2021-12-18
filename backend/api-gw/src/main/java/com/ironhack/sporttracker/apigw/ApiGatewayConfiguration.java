@@ -5,8 +5,6 @@ import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
 
 @Configuration
 public class ApiGatewayConfiguration {
@@ -30,8 +28,6 @@ public class ApiGatewayConfiguration {
                         .uri("lb://" + AUTH_SERVICE))
                 .route(p -> p.path("/auth/login")
                         .uri("lb://" + AUTH_SERVICE))
-                .route(p->p.path("/leagues")
-                        .uri("lb://"+SPORT_DATA_SERVICE))
                 .route(p->p.path("/leagues/**")
                         .uri("lb://"+SPORT_DATA_SERVICE))
                 .route(p->p.path("/teams/**")

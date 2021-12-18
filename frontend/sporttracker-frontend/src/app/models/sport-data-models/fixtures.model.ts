@@ -1,4 +1,4 @@
-import { FixtureTeam } from './../fixture-team.model';
+import { FixtureTeam } from './fixture-team.model';
 export interface Fixture{
   event_timestamp?:number;
   round?:string;

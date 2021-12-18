@@ -2,7 +2,7 @@ package com.ironhack.sporttracker.favoriteservice.controller;
 
 import com.ironhack.sporttracker.favoriteservice.enums.Sport;
 import com.ironhack.sporttracker.favoriteservice.model.FavoriteTeamDTO;
-import com.ironhack.sporttracker.favoriteservice.model.FavoriteTeamStatsDTO;
+import com.ironhack.sporttracker.favoriteservice.model.GenericStatsDTO;
 import com.ironhack.sporttracker.favoriteservice.service.FavoriteTeamService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -29,14 +29,14 @@ public class FavoriteTeamController {
     public List<FavoriteTeamDTO> getFavoritesForId(@RequestHeader (name="Authorization") String token){
         return favoriteTeamService.getFavoritesForId(token);
     }
-    @DeleteMapping("/delete/favorite/football/{id}")
+    @DeleteMapping("/delete/favorite/{sport}/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteFavorite(@PathVariable Long id, @RequestHeader (name="Authorization") String token){
-        favoriteTeamService.deleteFavorite(id, token, Sport.FOOTBALL);
+    public void deleteFavorite(@PathVariable Long id,@PathVariable Sport sport, @RequestHeader (name="Authorization") String token){
+        favoriteTeamService.deleteFavorite(id, token, sport);
     }
     @GetMapping("/inner/stats/most-fav")
     @ResponseStatus(HttpStatus.OK)
-    public List<FavoriteTeamStatsDTO> getMostFav(){
+    public List<GenericStatsDTO> getMostFav(){
         return favoriteTeamService.getMostFav();
     }
 }

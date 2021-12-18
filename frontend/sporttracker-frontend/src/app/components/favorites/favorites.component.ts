@@ -21,18 +21,20 @@ export class FavoritesComponent implements OnInit {
       if (res.body){
         this.favorites = res.body;
         let favoritesId:number[] = [];
+        let favoritesSport:string[]=[];
         this.favorites.forEach(fav => {
-          if (fav.teamId){
+          if (fav.teamId&&fav.sport){
             favoritesId.push(fav.teamId);
+            favoritesSport.push(fav.sport);
           }
         });
         if (favoritesId.length>0){
-          this.sportDataService.getLastFixturesForFavorites(favoritesId).subscribe(resp=>{
+          this.sportDataService.getLastFixturesForFavorites(favoritesId,favoritesSport).subscribe(resp=>{
             if (resp.body){
               this.lastFixtures=resp.body;
             }
           })
-          this.sportDataService.getNextFixturesForFavorites(favoritesId).subscribe(resp=>{
+          this.sportDataService.getNextFixturesForFavorites(favoritesId,favoritesSport).subscribe(resp=>{
             if (resp.body){
               this.nextFixtures=resp.body;
             }
@@ -41,9 +43,9 @@ export class FavoritesComponent implements OnInit {
       }
     })
   }
-  onDelete(id?:number){
-    if(id){
-      this.favoritesService.deleteFavoriteById(id).subscribe(resp=>{
+  onDelete(id?:number, sport?:string){
+    if(id && sport){
+      this.favoritesService.deleteFavoriteById(id, sport.toUpperCase()).subscribe(resp=>{
         if (resp.status==204){
           location.reload()
         }else{

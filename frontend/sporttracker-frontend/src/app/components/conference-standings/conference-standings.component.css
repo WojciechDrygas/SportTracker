@@ -1,0 +1,25 @@
+.container-fluid{
+  justify-content: center;
+  text-align: center;
+  min-width: 950px;
+  padding-top: 25px;
+}
+.row{
+  margin: 5px;
+  min-height: 50px;
+  justify-content: center;
+}
+img{
+  width: 20%;
+  height: auto;
+
+}
+.color-row{
+  background-color:#E5E5E5;
+}
+.col-4{
+  text-align: left;
+}
+.margin-auto{
+  margin: auto;
+}

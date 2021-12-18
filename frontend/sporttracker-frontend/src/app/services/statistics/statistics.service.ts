@@ -23,4 +23,12 @@ export class StatisticsService {
   getMostFavorite(){
     return this.http.get<TeamStat[]>(`${this.backendUrl}/stats/football/most-fav`,{ observe:'response'})
   }
+
+  getMostLiked(){
+    return this.http.get<TeamStat[]>(`${this.backendUrl}/stats/football/most-liked`,{ observe:'response'})
+  }
+
+  getMostDisliked(){
+    return this.http.get<TeamStat[]>(`${this.backendUrl}/stats/football/most-disliked`,{ observe:'response'})
+  }
 }

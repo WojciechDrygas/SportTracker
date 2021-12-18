@@ -1,6 +1,6 @@
 
 <div class="container-fluid">
-  <button class="btn btn-primary" [routerLink]="['/leagues']" routerLinkActive="router-link-active" >Go Back</button><br>
+  <button class="btn btn-warning standard-btn-size" [routerLink]="['/leagues/football']" routerLinkActive="router-link-active" >Go Back</button><br>
   <img src={{leagueLogoUrl}} alt="logo {{leagueName}}"><br>
   <h2>{{leagueName}}</h2>
   <div class="row header-row">
@@ -19,7 +19,7 @@
   </div>
   <div class="row" *ngFor="let standing of standings; let i = index" [ngClass]="{'color-row': i%2==0}">
     <div class="col-1">{{standing.rank}}</div>
-    <div class="col-2" [routerLink]="['/teams',leagueId,standing.team_id]" routerLinkActive="active" [ngClass]="{'router-link-active': true}"><img src={{standing.logo}} alt=""> <b>{{standing.teamName}}</b></div>
+    <div class="col-2" [routerLink]="['/teams','football',leagueId,standing.team_id]" routerLinkActive="active" [ngClass]="{'router-link-active': true}"><img src={{standing.logo}} alt=""> <b>{{standing.teamName}}</b></div>
     <div class="col-1">{{standing.all.matchsPlayed}}</div>
     <div class="col-1">{{standing.all.win}}</div>
     <div class="col-1">{{standing.all.draw}}</div>

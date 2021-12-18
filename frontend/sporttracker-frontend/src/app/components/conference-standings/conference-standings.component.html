@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row header">
+    <div class="col">
+      <h3><b>{{conferenceName}}</b></h3>
+    </div>
+
+  </div>
+  <div class="row border">
+    <div class="col-2 margin-auto">Rank</div>
+    <div class="col-4 margin-auto">Team name</div>
+    <div class="col-2 margin-auto">Games Played</div>
+    <div class="col-2 margin-auto">Wins</div>
+    <div class="col-1 margin-auto">Loses</div>
+    <div class="col-1 margin-auto">W/L Ratio</div>
+  </div>
+  <div class="row border" *ngFor="let standing of conference; let i=index" [ngClass]="{'color-row': i%2==0}">
+    <div class="col-2 margin-auto">{{standing.rank}}</div>
+    <div class="col-4 margin-auto" [routerLink]="['/teams','BASKETBALL',leagueId,standing.team_id]" routerLinkActive="active" [ngClass]="{'router-link-active': true}"><img src={{standing.logo}} alt=""> <b>{{standing.teamName}}</b></div>
+    <div class="col-2 margin-auto">{{standing.all.matchsPlayed}}</div>
+    <div class="col-2 margin-auto">{{standing.all.win}}</div>
+    <div class="col-1 margin-auto">{{standing.all.lose}}</div>
+    <div class="col-1 margin-auto">{{calculateRatio(i)}}</div>
+  </div>
+</div>

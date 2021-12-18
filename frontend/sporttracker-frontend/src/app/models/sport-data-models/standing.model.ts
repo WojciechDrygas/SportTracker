@@ -10,4 +10,5 @@ export interface Standing{
   points?:number;
   team_id?:number;
   logo?:string;
+  conference?:string;
 }

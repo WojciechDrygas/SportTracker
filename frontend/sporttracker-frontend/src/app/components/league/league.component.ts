@@ -13,7 +13,6 @@ export class LeagueComponent implements OnInit {
   }
   leagueId:number = 0;
   standings:Standing[] = [];
-  @Input()
   leagueName = "League";
   leagueLogoUrl = "";
 
@@ -21,7 +20,7 @@ export class LeagueComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.leagueId = this.route.snapshot.params['leagueId'];
     if (this.leagueId!=0){
-      this.sportDataService.getSubscribedLeagues().subscribe(resp=>{
+      this.sportDataService.getSubscribedLeagues("FOOTBALL").subscribe(resp=>{
         resp.body?.forEach(league => {
           if (league.leagueId==this.leagueId){
             this.leagueName=league.name;
@@ -30,7 +29,7 @@ export class LeagueComponent implements OnInit {
         }
       )})
 
-      let tmpStandings = await this.sportDataService.getStandingsForLeague(this.leagueId)
+      let tmpStandings = await this.sportDataService.getStandingsForLeague(this.leagueId,"FOOTBALL")
       this.standings= tmpStandings.body;
     }
   }

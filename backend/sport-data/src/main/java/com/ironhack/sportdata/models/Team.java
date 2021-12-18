@@ -1,5 +1,6 @@
 package com.ironhack.sportdata.models;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Team {
-    @JsonProperty("team_id")
+    @JsonAlias({"team_id","id"})
     private Long teamId;
     private String name;
     @JsonProperty("logo")

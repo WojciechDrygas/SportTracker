@@ -23,4 +23,5 @@ public class Standing {
     private GamesSummary away;
     private Long goalsDiff;
     private Long points;
+    private String conference;
 }

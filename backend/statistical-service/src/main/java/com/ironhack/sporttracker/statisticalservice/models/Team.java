@@ -1,6 +1,7 @@
 package com.ironhack.sporttracker.statisticalservice.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.ironhack.sporttracker.statisticalservice.enums.Sport;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,4 +24,5 @@ public class Team {
     private String venueCity;
     @JsonProperty("venue_capacity")
     private Long venueCapacity;
+    private Sport sport;
 }

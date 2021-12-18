@@ -19,69 +19,76 @@ export class TeamPageComponent implements OnInit {
   teamId:number=0;
   leagueId:number=0;
   teamData:Team={};
+  sport:string="";
   nextFixtures:Fixture[] = [];
   lastFixtures:Fixture[] = [];
   isFavorite:boolean = false;
   isLoggedIn:boolean=false;
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.isLoggedIn=this.auth.isLoggedIn();
+    this.sport=this.route.snapshot.params['sport']
     this.teamId = this.route.snapshot.params['teamId'];
     this.leagueId = this.route.snapshot.params['leagueId'];
-    this.sportDataService.getTeamDataForId(this.teamId).subscribe(resp=>{
+    this.sportDataService.getTeamDataForId(this.teamId, this.sport.toUpperCase()).subscribe(resp=>{
       if (resp.body){
         this.teamData=resp.body;
       }
     })
-    this.sportDataService.getLastFixturesForTeam(this.teamId).subscribe(resp=>{
+    this.sportDataService.getLastFixturesForTeam(this.teamId,this.sport).subscribe(resp=>{
       if (resp.body){
         this.lastFixtures=resp.body;
       }
     })
-    this.sportDataService.getNextFixturesForTeam(this.teamId).subscribe(resp=>{
+    this.sportDataService.getNextFixturesForTeam(this.teamId,this.sport).subscribe(resp=>{
       if (resp.body){
         this.nextFixtures=resp.body;
       }
     })
-    this.favoritesService.getFavoritesForId().subscribe(resp=>{
-      let tmpFavorite = false;
-      resp.body?.forEach(favorite =>{
-        if (favorite.teamId==this.teamId){
-          this.isFavorite=true;
-        }
+    if (this.isLoggedIn){
+      this.favoritesService.getFavoritesForId().subscribe(resp=>{
+        resp.body?.forEach(favorite =>{
+          if (favorite.teamId==this.teamId){
+            this.isFavorite=true;
+          }
+        })
       })
-    })
+    }
+
   }
   onBack(){
-    this.router.navigate(["/league/",this.leagueId]);
+    this.router.navigate(["/league",this.sport.toLowerCase(),this.leagueId]);
   }
 
   onDelete(){
-    this.favoritesService.deleteFavoriteById(this.teamId).subscribe(resp=>{
-      if (resp.status==204){
-        location.reload()
-      }  else{
-        console.log("Error deleting favorite",resp.status)
-      }
-    })
-
+    if(this.isLoggedIn){
+      this.favoritesService.deleteFavoriteById(this.teamId, this.sport).subscribe(resp=>{
+        if (resp.status==204){
+          location.reload()
+        }  else{
+          console.log("Error deleting favorite",resp.status)
+        }
+      })
+    }
   }
   onAdd(){
-    let fav:Favorite={
-      teamName:this.teamData.name,
-      teamId:this.teamId,
-      sport:"FOOTBALL",
-      teamLogo:this.teamData.logo,
-      leagueId:this.leagueId
+    if (this.isLoggedIn){
+      let fav:Favorite={
+        teamName:this.teamData.name,
+        teamId:this.teamId,
+        sport:this.sport.toUpperCase(),
+        teamLogo:this.teamData.logo,
+        leagueId:this.leagueId
+      }
+      this.favoritesService.postFavorite(fav).subscribe(resp=>{
+        if (resp.status==202){
+          location.reload();
+        }
+        else{
+          console.log("Error adding team!",resp.status)
+        }
+      });
     }
-    this.favoritesService.postFavorite(fav).subscribe(resp=>{
-      if (resp.status==202){
-        location.reload();
-      }
-      else{
-        console.log("Error adding team!",resp.status)
-      }
-    });
   }
 
 }

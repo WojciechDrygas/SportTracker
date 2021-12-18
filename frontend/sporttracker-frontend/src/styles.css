@@ -5,3 +5,16 @@
 .router-link-active{
   cursor:pointer;
 }
+.standard-btn-size{
+  width: 150px;
+  height: 60px;
+  margin: 10px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.loader-container{
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+}

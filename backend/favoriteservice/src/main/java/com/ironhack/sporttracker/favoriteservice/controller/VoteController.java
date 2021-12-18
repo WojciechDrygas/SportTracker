@@ -1,12 +1,15 @@
 package com.ironhack.sporttracker.favoriteservice.controller;
 
 import com.ironhack.sporttracker.favoriteservice.enums.Sport;
+import com.ironhack.sporttracker.favoriteservice.model.GenericStatsDTO;
 import com.ironhack.sporttracker.favoriteservice.model.VoteRequest;
 import com.ironhack.sporttracker.favoriteservice.model.VoteResponse;
 import com.ironhack.sporttracker.favoriteservice.model.VotesForTeam;
 import com.ironhack.sporttracker.favoriteservice.service.VoteService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class VoteController {
@@ -33,5 +36,16 @@ public class VoteController {
     @ResponseStatus(HttpStatus.OK)
     public VotesForTeam getVotesForTeam(@PathVariable Sport sport, @PathVariable Long id){
         return voteService.getVotesForTeam(sport,id);
+    }
+
+    @GetMapping("/inner/stats/likes")
+    @ResponseStatus(HttpStatus.OK)
+    public List<GenericStatsDTO> getMostLiked(){
+        return voteService.getMost(true);
+    }
+    @GetMapping("/inner/stats/dislikes")
+    @ResponseStatus(HttpStatus.OK)
+    public List<GenericStatsDTO> getMostDisliked(){
+        return voteService.getMost(false);
     }
 }

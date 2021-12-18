@@ -1,10 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-7"><span>Most Favorite Team</span></div>
-    <div class="col-5">Times added</div>
+    <div class="col-6"><span>Most Favorite Team</span></div>
+    <div class="col-3">Times added</div>
+    <div class="col-3">Sport</div>
   </div>
-  <div class="row" *ngFor="let teamStat of data;let i = index" [ngClass]="{'color-row': i%2==0, 'router-link-active': true}" [routerLink]="['/teams',data[i].leagueId,data[i].team_id]" routerLinkActive="active">
-    <div class="col-7"><img src="{{teamStat.logo}}" alt="{{teamStat.name}} logo"><span>{{teamStat.name}}</span></div>
-    <div class="col-5">{{teamStat.count}}</div>
+  <div class="row" *ngFor="let teamStat of data;let i = index" [ngClass]="{'color-row': i%2==0, 'router-link-active': true}" [routerLink]="['/teams',teamStat.sport,teamStat.leagueId,teamStat.team_id]" routerLinkActive="active">
+    <div class="col-6"><img src="{{teamStat.logo}}" alt="{{teamStat.name}} logo"><span>{{teamStat.name}}</span></div>
+    <div class="col-3">{{teamStat.count}}</div>
+    <div class="col-3">{{teamStat.sport}}</div>
   </div>
 </div>

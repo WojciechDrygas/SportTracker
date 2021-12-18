@@ -7,9 +7,9 @@
       <img src={{data.homeTeam.logo}} alt="">
     </div>
     <div class="col-4 fixture-info">
-      <p>{{data.round}}</p>
+      <p *ngIf="data.round">{{data.round}}</p>
       <p><b>{{data.eventDate}}</b></p>
-      <span>Played at:</span>
+      <span *ngIf="data.venue">Played at:</span>
       <p class="venue"><b>{{data.venue}}</b></p>
       <span>Status:</span>
       <p><b>{{data.status}}</b></p>

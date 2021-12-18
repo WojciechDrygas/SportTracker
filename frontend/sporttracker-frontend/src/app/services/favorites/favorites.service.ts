@@ -25,7 +25,7 @@ export class FavoritesService {
   getFavoritesForId(){
     return this.http.get<Favorite[]>(`${this.backendUrl}/favorite_team/`,{headers:this.composeHeader(),observe:'response'});
   }
-  deleteFavoriteById(id:number){
-    return this.http.delete(`${this.backendUrl}/delete/favorite/football/`+id,{headers:this.composeHeader(),observe:'response'});
+  deleteFavoriteById(id:number, sport:string){
+    return this.http.delete(`${this.backendUrl}/delete/favorite/`+sport.toUpperCase()+`/`+id,{headers:this.composeHeader(),observe:'response'});
   }
 }

@@ -1,0 +1,15 @@
+
+<div class="container-fluid">
+  <button class="btn btn-warning standard-btn-size" [routerLink]="['/leagues/basketball']" routerLinkActive="router-link-active" >Go Back</button><br>
+  <img src={{leagueLogoUrl}} alt="logo {{leagueName}}"><br>
+  <h2>{{leagueName}}</h2>
+  <div class="row">
+    <div class="col-6">
+      <app-conference-standings [leagueId]="leagueId" [data]="easternConference" [conferenceName]="'Eastern Conference'"></app-conference-standings>
+
+    </div>
+    <div class="col-6">
+      <app-conference-standings [leagueId]="leagueId" [data]="westernConference" [conferenceName]="'Western Conference'"></app-conference-standings>
+    </div>
+  </div>
+</div>

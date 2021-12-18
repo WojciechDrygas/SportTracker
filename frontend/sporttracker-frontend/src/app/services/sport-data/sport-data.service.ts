@@ -14,28 +14,25 @@ export class SportDataService {
   private readonly backendUrl = "http://localhost:8000";
 
 
-  getSubscribedLeagues(){
-    return this.http.get<League[]>(`${this.backendUrl}/leagues`,{observe:'response'});
+  getSubscribedLeagues(sport:String){
+    return this.http.get<League[]>(`${this.backendUrl}/leagues/`+sport,{observe:'response'});
   }
-  async getTeamsForLeague(id:number):Promise<any>{
-    return this.http.get(`${this.backendUrl}/leagues/`+id,{observe:'response'}).toPromise();
+  getTeamDataForId(id:number, sport:string){
+    return this.http.get<Team>(`${this.backendUrl}/teams/`+sport+`/`+id,{observe:'response'});
   }
-  getTeamDataForId(id:number){
-    return this.http.get<Team>(`${this.backendUrl}/teams/`+id,{observe:'response'});
+  getLastFixturesForTeam(id:number,sport:string){
+    return this.http.get<Fixture[]>(`${this.backendUrl}/teams/fixtures/`+sport.toUpperCase()+`/last/`+id,{observe:'response'});
   }
-  getLastFixturesForTeam(id:number){
-    return this.http.get<Fixture[]>(`${this.backendUrl}/teams/fixtures/last/`+id,{observe:'response'});
+  getNextFixturesForTeam(id:number,sport:string){
+    return this.http.get<Fixture[]>(`${this.backendUrl}/teams/fixtures/`+sport.toUpperCase()+`/next/`+id,{observe:'response'});
   }
-  getNextFixturesForTeam(id:number){
-    return this.http.get<Fixture[]>(`${this.backendUrl}/teams/fixtures/next/`+id,{observe:'response'});
+  getNextFixturesForFavorites(favoritesId:number[],favoritesSport:string[]){
+    return this.http.get<Fixture[]>(`${this.backendUrl}/teams/favorites/fixtures/next/`+favoritesId.toString()+`/`+favoritesSport.toString(),{observe:'response'});
   }
-  getNextFixturesForFavorites(favoritesId:number[]){
-    return this.http.get<Fixture[]>(`${this.backendUrl}/teams/favorites/fixtures/next/`+favoritesId.toString(),{observe:'response'});
+  getLastFixturesForFavorites(favoritesId:number[],favoritesSport:string[]){
+    return this.http.get<Fixture[]>(`${this.backendUrl}/teams/favorites/fixtures/last/`+favoritesId.toString()+`/`+favoritesSport.toString(),{observe:'response'});
   }
-  getLastFixturesForFavorites(favoritesId:number[]){
-    return this.http.get<Fixture[]>(`${this.backendUrl}/teams/favorites/fixtures/last/`+favoritesId.toString(),{observe:'response'});
-  }
-  async getStandingsForLeague(id:number):Promise<any>{
-    return this.http.get(`${this.backendUrl}/leagues/standings/`+id,{observe:'response'}).toPromise();
+  async getStandingsForLeague(id:number,sport:string):Promise<any>{
+    return this.http.get(`${this.backendUrl}/leagues/standings/`+sport+`/`+id,{observe:'response'}).toPromise();
   }
 }

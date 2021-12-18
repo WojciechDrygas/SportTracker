@@ -1,3 +1,4 @@
+import { LoaderService } from './../../services/loader/loader.service';
 import { UserDetailsModel } from './../../models/user-models/user-details.model';
 import { StorageService } from './../../services/storage/storage.service';
 import { AuthService } from './../../services/auth/auth.service';
@@ -11,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   isNavbarOpen=false;
 
-  constructor(private authService:AuthService, private storageService:StorageService) { }
+  constructor(private authService:AuthService, private storageService:StorageService, public loaderService:LoaderService) { }
 
   ngOnInit(): void {
   }

@@ -9,6 +9,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -67,5 +71,28 @@ public class VoteService {
         }else {
             return vote.get().getVote();
         }
+    }
+
+    public List<GenericStatsDTO> getMost(boolean isLiked) {
+        List<Object[]> queryResult;
+        if (isLiked){
+            queryResult = voteRepository.getMostLiked();
+        }else{
+            queryResult = voteRepository.getMostDisliked();
+        }
+        List<GenericStatsDTO> result = new ArrayList<>();
+        for (Object[] obj: queryResult){
+            GenericStatsDTO genericStats = new GenericStatsDTO();
+            Long teamId = new BigDecimal(obj[0].toString()).longValue();
+            Long count = new BigDecimal(obj[1].toString()).longValue();
+            Long leagueId = new BigDecimal(obj[2].toString()).longValue();
+            Sport sport = Sport.valueOf(obj[3].toString());
+            genericStats.setTeamId(teamId);
+            genericStats.setCount(count);
+            genericStats.setLeagueId(leagueId);
+            genericStats.setSport(sport);
+            result.add(genericStats);
+        }
+        return result;
     }
 }
