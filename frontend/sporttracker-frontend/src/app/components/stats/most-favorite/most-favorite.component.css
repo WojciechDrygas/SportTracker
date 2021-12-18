@@ -1,0 +1,20 @@
+.container{
+  border: 1px solid black;
+  min-width: 300px;
+  margin: 10px;
+
+}
+img{
+  width: 10%;
+}
+.col-6{
+  justify-content: left;
+  text-align: left;
+}
+.col-3{
+  justify-content: center;
+  text-align: center;
+}
+.color-row{
+  background-color:#E5E5E5;
+}

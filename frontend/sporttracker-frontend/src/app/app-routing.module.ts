@@ -1,3 +1,7 @@
+import { NbaStandingComponent } from './components/nba-standing/nba-standing.component';
+import { NbaLeagueComponent } from './components/nba-league/nba-league.component';
+import { TeamPageComponent } from './components/team-page/team-page.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 import { LeagueComponent } from './components/league/league.component';
 import { LeaguesComponent } from './components/leagues/leagues.component';
 import { HomeComponent } from './components/home/home.component';
@@ -20,11 +24,23 @@ const routes: Routes = [
       component: RegisterComponent
     },
     {
-      path:'leagues',
+      path:'leagues/football',
       component: LeaguesComponent
     },{
-      path:'league/:leagueId',
+      path:'league/football/:leagueId',
       component: LeagueComponent
+    },{
+      path:'favorites',
+      component: FavoritesComponent
+    },{
+      path:'teams/:sport/:leagueId/:teamId',
+      component:TeamPageComponent
+    },{
+      path:'leagues/basketball',
+      component:NbaLeagueComponent
+    },{
+      path:'league/basketball/:leagueId',
+      component:NbaStandingComponent
     }
   ];
 

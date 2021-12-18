@@ -1,12 +1,33 @@
-<div class="container">{{this.leagueId}}</div>
 
-<div class="container">
+<div class="container-fluid">
+  <button class="btn btn-warning standard-btn-size" [routerLink]="['/leagues/football']" routerLinkActive="router-link-active" >Go Back</button><br>
+  <img src={{leagueLogoUrl}} alt="logo {{leagueName}}"><br>
+  <h2>{{leagueName}}</h2>
+  <div class="row header-row">
+    <div class="col-1">Rank</div>
+    <div class="col-2">Team Name</div>
+    <div class="col-1">Games</div>
+    <div class="col-1">Wins</div>
+    <div class="col-1">Draws</div>
+    <div class="col-1">Loses</div>
+    <div class="col-1">Scored</div>
+    <div class="col-1">Conceded</div>
+    <div class="col-1">Diff +/-</div>
+    <div class="col-1">Last 5</div>
+    <div class="col-1">Points</div>
 
-  <ul class="list-group">
-    <li class="list-group-item" *ngFor="let team of teams">
-      <p>{{team.name}}</p>
-    </li>
-
-  </ul>
-
+  </div>
+  <div class="row" *ngFor="let standing of standings; let i = index" [ngClass]="{'color-row': i%2==0}">
+    <div class="col-1">{{standing.rank}}</div>
+    <div class="col-2" [routerLink]="['/teams','football',leagueId,standing.team_id]" routerLinkActive="active" [ngClass]="{'router-link-active': true}"><img src={{standing.logo}} alt=""> <b>{{standing.teamName}}</b></div>
+    <div class="col-1">{{standing.all.matchsPlayed}}</div>
+    <div class="col-1">{{standing.all.win}}</div>
+    <div class="col-1">{{standing.all.draw}}</div>
+    <div class="col-1">{{standing.all.lose}}</div>
+    <div class="col-1">{{standing.all.goalsFor}}</div>
+    <div class="col-1">{{standing.all.goalsAgainst}}</div>
+    <div class="col-1">{{standing.goalsDiff}}</div>
+    <div class="col-1">{{standing.forme}}</div>
+    <div class="col-1">{{standing.points}}</div>
+  </div>
 </div>

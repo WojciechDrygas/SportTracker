@@ -1,0 +1,13 @@
+<div class="container px-5">
+  <h1>Basketball Leagues Standings</h1>
+  <p *ngIf="subscribedLeagues.length==0">No leagues available!</p>
+  <div class="row">
+    <div class="col league" *ngFor="let league of subscribedLeagues">
+      <div class="container content" [routerLink]="['/league/basketball', league.leagueId]">
+        <h2>{{league.name}}</h2>
+        <img src='{{league.logoUrl}}' alt="">
+      </div>
+    </div>
+  </div>
+</div>
+

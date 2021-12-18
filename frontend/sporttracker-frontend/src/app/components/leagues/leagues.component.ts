@@ -13,7 +13,7 @@ export class LeaguesComponent implements OnInit {
   subscribedLeagues:League[]=[];
 
   constructor(private router:Router, private sportDataService:SportDataService) {
-    this.sportDataService.getSubscribedLeagues().subscribe(
+    this.sportDataService.getSubscribedLeagues("FOOTBALL").subscribe(
       res=>{
         if (res.body){
           this.subscribedLeagues = res.body;

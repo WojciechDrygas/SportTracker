@@ -3,14 +3,25 @@
         xmlns:jsr107 = "http://www.ehcache.org/v3/jsr107"
         xsi:schemaLocation="http://http://www.ehcache.org/schema/ehcache-core-3.0.xsd">
 
-    <cache-template name="static-data">
+    <cache-template name="static-info">
         <expiry>
             <ttl unit="days">1</ttl>
         </expiry>
         <heap unit="entries">1000</heap>
     </cache-template>
+    <cache-template name="fixtures">
+        <expiry>
+            <ttl unit="hours">1</ttl>
+        </expiry>
+        <heap unit="entries">1000</heap>
+    </cache-template>
 
 
-    <cache alias="SubscribedLeagues" uses-template="static-data"/>
+    <cache alias="TeamsForLeague" uses-template="static-info"/>
+    <cache alias="TeamById" uses-template="static-info"/>
+    <cache alias="StandingsForLeague" uses-template="static-info"/>
+
+    <cache alias="FixturesTeamById" uses-template="fixtures"/>
+    <cache alias="FixturesForFavorites" uses-template="fixtures"/>
 </config>
 

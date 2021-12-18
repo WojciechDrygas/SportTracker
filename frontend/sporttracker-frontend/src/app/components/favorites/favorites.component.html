@@ -1,0 +1,15 @@
+<div class="container">
+  <h2>Favorite teams</h2>
+  <div class="row header-row">
+    <div class="col-2" *ngFor="let favorite of favorites">
+      <img src={{favorite.teamLogo}} alt="" srcset="">
+      <p><b>{{favorite.teamName}}</b></p>
+      <button class="btn btn-warning standard-btn-size" (click)="onDelete(favorite.teamId, favorite.sport)">Delete from favorites!</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <app-fixtures-list [lastFixtures]="lastFixtures" [nextFixtures]="nextFixtures"></app-fixtures-list>
+    </div>
+  </div>
+</div>

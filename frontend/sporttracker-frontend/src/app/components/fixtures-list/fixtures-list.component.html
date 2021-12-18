@@ -1,0 +1,48 @@
+<div class="container border">
+  <div class="row">
+    <div class="col-12 col-md-6" *ngIf="lastFixtures.length>0">
+      <h2>Last Fixtures</h2>
+      <div *ngFor="let fixture of lastFixtures; let i = index" class="router-link-active" [ngStyle]="{'border': '1px solid black'}" (click)="onShow(i, true)" [ngClass]="{'color-row': i%2==0}">
+        <div class="container">
+          <div class="row">
+            <i class="fas fa-angle-double-down fa-xl" *ngIf="showLast[i]===false"></i>
+            <i class="fas fa-angle-double-up fa-xl" *ngIf="showLast[i]===true"></i>
+          </div>
+          <div class="row" *ngIf="showLast[i]==false">
+            <div class="col-4"><img src="{{fixture.homeTeam.logo}}" alt="{{fixture.homeTeam.team_name}} logo"><span>{{fixture.homeTeam.team_name}}</span></div>
+            <div class="col-2"><span><b>{{fixture.goalsHomeTeam}}</b></span></div>
+            <div class="col-2"><span><b>{{fixture.goalsAwayTeam}}</b></span></div>
+            <div class="col-4"><img src="{{fixture.awayTeam.logo}}" alt="{{fixture.awayTeam.team_name}} logo"><span>{{fixture.awayTeam.team_name}}</span></div>
+          </div>
+        </div>
+        <div class="row"  *ngIf="showLast[i]==true">
+          <div class="col">
+            <app-fixture [data]="lastFixtures[i]"></app-fixture>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6" *ngIf="nextFixtures.length>0">
+      <h2>Next Fixtures</h2>
+      <div *ngFor="let fixture of nextFixtures; let i = index" class="router-link-active" [ngStyle]="{'border': '1px solid black'}" (click)="onShow(i, false)" [ngClass]="{'color-row': i%2==0}">
+        <div class="container">
+          <div class="row">
+            <i class="fas fa-angle-double-down fa-xl" *ngIf="showNext[i]===false"></i>
+            <i class="fas fa-angle-double-up fa-xl" *ngIf="showNext[i]===true"></i>
+          </div>
+          <div class="row" *ngIf="showNext[i]==false">
+            <div class="col-4"><img src="{{fixture.homeTeam.logo}}" alt="{{fixture.homeTeam.team_name}} logo"><span>{{fixture.homeTeam.team_name}}</span></div>
+            <div class="col-2"><span><b>{{fixture.goalsHomeTeam}}</b></span></div>
+            <div class="col-2"><span><b>{{fixture.goalsAwayTeam}}</b></span></div>
+            <div class="col-4"><img src="{{fixture.awayTeam.logo}}" alt="{{fixture.awayTeam.team_name}} logo"><span>{{fixture.awayTeam.team_name}}</span></div>
+          </div>
+        </div>
+        <div class="row"  *ngIf="showNext[i]==true">
+          <div class="col">
+            <app-fixture [data]="nextFixtures[i]" [ngStyle]="{'width': '100%'}"></app-fixture>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

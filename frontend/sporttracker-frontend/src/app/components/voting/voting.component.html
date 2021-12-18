@@ -1,0 +1,10 @@
+<div class="container">
+    <div class="row">
+      <div class="col-6" (click)="onVoteClick(true)"><i class="fas fa-arrow-up bg-green fa-2x router-link-active"></i></div>
+      <div class="col-6" (click)="onVoteClick(false)"><i class="fas fa-arrow-down bg-red fa-2x router-link-active"></i></div>
+    </div>
+    <div class="row">
+      <div class="col-6"><b>{{data.likes}}</b></div>
+      <div class="col-6"><b>{{data.dislikes}}</b></div>
+    </div>
+</div>

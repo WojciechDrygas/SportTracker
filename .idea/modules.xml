@@ -5,8 +5,10 @@
       <module fileurl="file://$PROJECT_DIR$/backend/api-gw/api-gw.iml" filepath="$PROJECT_DIR$/backend/api-gw/api-gw.iml" />
       <module fileurl="file://$PROJECT_DIR$/backend/auth-service/auth-service.iml" filepath="$PROJECT_DIR$/backend/auth-service/auth-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/backend/discovery-service/discovery-service.iml" filepath="$PROJECT_DIR$/backend/discovery-service/discovery-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/favoriteservice/favoriteservice.iml" filepath="$PROJECT_DIR$/backend/favoriteservice/favoriteservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/backend/sport-data/sport-data.iml" filepath="$PROJECT_DIR$/backend/sport-data/sport-data.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/sporttracker.iml" filepath="$PROJECT_DIR$/.idea/sporttracker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/statistical-service/statistical-service.iml" filepath="$PROJECT_DIR$/backend/statistical-service/statistical-service.iml" />
     </modules>
   </component>
 </project>

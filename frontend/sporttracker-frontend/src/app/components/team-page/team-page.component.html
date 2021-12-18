@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <img src="{{teamData.logo}}" alt="{{teamData.name}} logo">
+      <p *ngIf="teamData.name">Team name: <b>{{teamData.name}}</b></p>
+      <p *ngIf="teamData.founded">Team founded in: <b>{{teamData.founded}}</b></p>
+      <p *ngIf="teamData.venue_name">Team plays on: <b>{{teamData.venue_name}}</b></p>
+      <p *ngIf="teamData.venue_city">Team is from: <b>{{teamData.venue_city}}</b></p>
+      <p *ngIf="teamData.venue_capacity">Statium capacity: <b>{{teamData.venue_capacity}}</b></p>
+    </div>
+  </div>
+  <div class="row" [ngStyle]="{'justify-content': 'center'}">
+    <div class="col-2">
+      <app-voting [sport]="sport.toUpperCase()" [teamId]="teamId" [leagueId]="leagueId" [isLoggedIn]="isLoggedIn"></app-voting>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-warning standard-btn-size" (click)="onBack()">Go to league</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-warning standard-btn-size" *ngIf="!isFavorite && isLoggedIn" (click)=onAdd()>Add to Favorites</button>
+      <button class="btn btn-warning standard-btn-size" *ngIf="isFavorite && isLoggedIn" (click)=onDelete()>Delete from Favorites</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <app-fixtures-list [lastFixtures]="lastFixtures" [nextFixtures]="nextFixtures"></app-fixtures-list>
+    </div>
+  </div>
+

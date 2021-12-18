@@ -1,3 +1,20 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import '~bootstrap-icons/font/bootstrap-icons.css';
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+.router-link-active{
+  cursor:pointer;
+}
+.standard-btn-size{
+  width: 150px;
+  height: 60px;
+  margin: 10px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.loader-container{
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+}

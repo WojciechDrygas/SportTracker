@@ -1,0 +1,10 @@
+.container{
+  justify-content:center;
+  text-align: center;
+}
+.bg-red{
+  color: rgba(255, 99, 71, 1);
+}
+.bg-green{
+  color: rgb(60, 179, 113);
+}
